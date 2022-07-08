@@ -67,12 +67,12 @@ if (!isset($_SESSION['userid'])) {
                                         echo "<td>";
                                         echo "<button>";
                                         echo "<a href='editadmin.php'>";
-                                        echo "Edit";
+                                        echo " Edit";
                                         echo "</a>";
                                         echo  "</button>";
                                         echo   "<button>";
-                                        echo " <a href=''>";
-                                        echo "Delete";
+                                        echo " <a href='#'>";
+                                        echo " Delete";
                                         echo "</a>";
                                         echo   "</button>";
                       
