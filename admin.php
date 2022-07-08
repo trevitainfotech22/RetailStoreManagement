@@ -58,22 +58,20 @@ if (!isset($_SESSION['userid'])) {
                                     while($res = mysqli_fetch_array($result)){
                                         ?>
                                     <tr>
-                                        <td> <?php echo $counter ?></td>
-                                        <td> <?php echo $res['name'] ?></td>
-                                        <td> <?php echo $res['username'] ?></td>
-                                        <td> <?php echo $res['password'] ?></td>
-                                        <td><?php if($res['role']==1){ }?></td>
-                                         <td>
-                                            <button>
-                                                <a href="editadmin.php">
-                                                            Edit</a>
-                                            </button>
-                                             <button>
-                                                 <a href="">
-                                                     Delete</a>
-                                              </button>
+                                    <?php if($res['role']==1){ 
+                                        echo "<td>".  $counter ."</td>";
+                                        echo "<td>" . $res['name'] ."</td>";
+                                        echo "<td>" .$res['username'] ."</td>";
+                                        echo "<td>".  $res['password'] ."</td>";
+                                        
+                                        echo "<td>";
+                                        echo "<button><a href='editadmin.php'> Edit</a>";
+                                        echo  "</button>";
+                                        echo   "<button> <a href="">".Delete."</a>";
+                                        echo   "</button>";
                       
-                                         </td>
+                                         echo "</td>";
+                                        }?>
                             </tr> <?php $counter++; } ?>
           </tbody>
                    
