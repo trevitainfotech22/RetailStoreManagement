@@ -3,7 +3,25 @@ session_start();
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
+include_once ('./Database/mydb.php');
+if($_POST['submit'])
+{
+ $name= mysqli_real_escape_string($connection, $_POST['name']);
+ $username=mysqli_real_escape_string($connection, $_POST['username']);
+ $password=mysqli_real_escape_string($connection, $_POST['password']);
+ $role = 2;
+
+
+$query = mysqli_query($connection, "insert into userdetails(name,username,password,role) values('{$name}','{$username}','{$password}','{$role}')") or die(mysqli_error($connection));
+
+ if($query)
+ {
+ echo "<script>alert('record inserted');</script>";
+ }
+ echo "<script> window.location='storemanager.php'; </script>";
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,7 +52,7 @@ if (!isset($_SESSION['userid'])) {
                 <br><br>
                 &nbsp;&nbsp;&nbsp;<h2 class="title1">ADD STORE-MANAGER</h2>
                 <div class="container">
-                    <form action="/">
+                <form method="post">
                         <p>
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
@@ -57,7 +75,7 @@ if (!isset($_SESSION['userid'])) {
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                        <center> <input type="submit" value="Submit" > 
+                        <center> <input type="submit" value="Submit" name = "submit" > 
 
                         </center>        
                 </div>

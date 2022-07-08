@@ -43,8 +43,11 @@ if (!isset($_SESSION['userid'])) {
                                 Add Admin &raquo;</a></button>
 
             <br><br>
+            <div class="col-div-8">
+                    <div class="box-8">
             <div align="center">
                 <table class="table"> 
+
                     <thead>
                         <th>SR.NO</th>
                         <th>NAME</th>
@@ -78,7 +81,8 @@ if (!isset($_SESSION['userid'])) {
                                         }?>
                             </tr> <?php $counter++; } ?>
           </tbody>
-                   
+          </div>
+            </div>
                 </div>
             </div>
         </table>

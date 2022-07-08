@@ -34,7 +34,7 @@ $query = mysqli_query($connection, "insert into userdetails(name,username,passwo
         <!----===== Boxicons CSS ===== -->
         <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title> Retail system </title>      x
+        <title> Retail system </title>      
     </head>
     <body>
         <?php
