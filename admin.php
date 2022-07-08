@@ -59,35 +59,22 @@ if (!isset($_SESSION['userid'])) {
                                         ?>
                                     <tr>
                                     <?php if($res['role']==1){ 
-                                        echo "<td>"  $counter "</td>"
-                                        echo "<td>"  $res['name'] "</td>"
-                                        echo "<td>" $res['username'] "</td>"
-                                        echo "<td>"  $res['password'] "</td>"
-                                        
-                                   echo "<td>"
-                                             echo <button>
-                                                <a href="editadmin.php">
-                                                            Edit</a>
-                                            </button>
-                                             <button>
-                                                 <a href="">
-                                                     Delete</a>
-                                              </button>
-=======
+                                        echo "<td>". $counter."</td>";
+                                        echo "<td>".$res['name']."</td>";
+                                        echo "<td>". $res['username']."</td>";
+                                        echo "<td>".$res['password']."</td>";
                                         echo "<td>";
                                         echo "<button>";
                                         echo "<a href='editadmin.php'>";
-                                        echo " Edit";
-                                        echo "</a>";
-                                        echo  "</button>";
-                                        echo   "<button>";
-                                        echo " <a href='#'>";
-                                        echo " Delete";
-                                        echo "</a>";
-                                        echo   "</button>";
->>>>>>> 17f4c248128e5b2a4e04f10eeaa49ef5907c5da4
-                      
-                                         echo "</td>"
+                                        echo 'Edit';
+                                        echo "</a>";        
+                                        echo "</button>";
+                                        echo " <button>";
+                                        echo "<a href=''>";
+                                        echo 'Delete';
+                                        echo " </a>";                   
+                                        echo " </button>";     
+                                         echo "</td>";
                                         }?>
                             </tr> <?php $counter++; } ?>
           </tbody>
