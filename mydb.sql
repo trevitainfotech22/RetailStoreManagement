@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2022 at 03:21 PM
+-- Generation Time: Jul 08, 2022 at 01:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -187,7 +187,10 @@ INSERT INTO `userdetails` (`id`, `name`, `username`, `password`, `role`) VALUES
 (4, 'Riya Sukhadia', 'riya', 'riya123', 4),
 (5, 'Ravi Singh', 'ravi', 'ravi124', 5),
 (6, 'Parth Machi', 'parth', '67890', 6),
-(7, 'riddhi patel', 'riddhi', 'r123', 3);
+(7, 'riddhi patel', 'riddhi', 'r123', 3),
+(12, 'Juned Pathan', 'Juned', 'J123', 1),
+(13, 'demo', 'demo123', '1234', 1),
+(14, 'kiran patel', 'kiran', '3456', 1);
 
 -- --------------------------------------------------------
 
@@ -352,7 +355,7 @@ ALTER TABLE `storemanager`
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
