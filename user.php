@@ -26,8 +26,14 @@ if (!isset($_SESSION['userid'])) {
 
         <section class="home">
             <div class="text"> Welcome ...... </div>
+            <div class ="col123">           
+            <button  class="detail"  >
+                   <a href="userdetails.php">VIEW USER DETAILS</a> 
+                </button>
+                <div>
 
             <div class="row" align ="center">
+              
 
                 <a href="admin.php">
                     <img src="images/admin.png" alt="" style="width:60%"></a>

@@ -4,19 +4,21 @@ if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
 include_once ('./Database/mydb.php');
-if($_POST)
+if($_POST['submit'])
 {
  $name= mysqli_real_escape_string($connection, $_POST['name']);
  $username=mysqli_real_escape_string($connection, $_POST['username']);
  $password=mysqli_real_escape_string($connection, $_POST['password']);
+ $role = 1;
 
 
-$query = mysqli_query($connection, "insert into userdetails(expertname,expert_qualification,mobileno,gender) values('{$ename}','{$equalification}','{$emobile}','{$egender}')") or die(mysqli_error($connection));
+$query = mysqli_query($connection, "insert into userdetails(name,username,password,role) values('{$name}','{$username}','{$password}','{$role}')") or die(mysqli_error($connection));
 
  if($query)
  {
  echo "<script>alert('record inserted');</script>";
  }
+ echo "<script> window.location='admindash.php'; </script>";
 }
 ?>
 <!DOCTYPE html>
@@ -49,7 +51,7 @@ $query = mysqli_query($connection, "insert into userdetails(expertname,expert_qu
                 <br><br>
                 &nbsp;&nbsp;&nbsp;<h2 class="title1">ADD ADMIN</h2>
                 <div class="container">
-                    <form action="/">
+                    <form method="post">
                         <p>
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
@@ -72,7 +74,7 @@ $query = mysqli_query($connection, "insert into userdetails(expertname,expert_qu
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                        <center> <input type="submit" value="Submit" > 
+                        <center> <input type="submit" value="Submit" name="submit"> 
 
                         </center>        
                 </div>

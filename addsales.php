@@ -19,18 +19,11 @@ $query1 = mysqli_query($connection, "insert into userdetails(name,username,passw
 $query2 = mysqli_query($connection, "insert into personnaldetails(p_name,p_address,p_idproof) values('{$name}','{$address}','{$proof}')") or die(mysqli_error($connection));
 
 $query3 = mysqli_query($connection, "insert into salesman(s_dob,s_phone) values('{$date}','{$phone}')") or die(mysqli_error($connection));
- if($query1)
+ if($query1 && $query2 && $query3)
  {
  echo "<script>alert('record inserted');</script>";
  }
- if($query2)
- {
- echo "<script>alert('record inserted');</script>";
- }
- if($query3)
- {
- echo "<script>alert('record inserted');</script>";
- }
+ 
 }
 ?>
 
