@@ -18,7 +18,7 @@ $query = mysqli_query($connection, "insert into userdetails(name,username,passwo
  {
  echo "<script>alert('record inserted');</script>";
  }
- echo "<script> window.location='admindash.php'; </script>";
+ echo "<script> window.location='admin.php'; </script>";
 }
 ?>
 <!DOCTYPE html>

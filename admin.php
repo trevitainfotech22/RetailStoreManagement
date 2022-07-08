@@ -55,34 +55,34 @@ if (!isset($_SESSION['userid'])) {
                         <th>PASSWORD</th>
                         <th>ACTION</th>
                     </thead>
+            
                     <tbody>
                     <?php $counter=1;
+                                    if (isset($_GET['did'])) {
+                                        $did = $_GET['did'];
+                                        $deleteq = mysqli_query($connection, "delete from userdetails where id ='{$did}'")or die(mysqli_error($connection));
+                                        if ($deleteq) {
+                                            echo "<script>alert('Record Deleted');</script>";
+                                        }
+                                    }
                                     
                                     while($res = mysqli_fetch_array($result)){
                                         ?>
                                     <tr>
                                     <?php if($res['role']==1){ 
-                                        echo "<td>". $counter."</td>";
+                                        echo "<td>". $res['id']."</td>";
                                         echo "<td>".$res['name']."</td>";
                                         echo "<td>". $res['username']."</td>";
                                         echo "<td>".$res['password']."</td>";
-                                        echo "<td>";
-                                        echo "<button>";
-                                        echo "<a href='editadmin.php'>";
-                                        echo 'Edit';
-                                        echo "</a>";        
-                                        echo "</button>";
-                                        echo " <button>";
-                                        echo "<a href=''>";
-                                        echo 'Delete';
-                                        echo " </a>";                   
-                                        echo " </button>";     
-                                         echo "</td>";
+                                        echo "<td> <a href='editadmin.php?id={$res['id']}'>Edit</a> | <a href='admin.php ? did={$res['id']}]'>Delete</a> </td>";
+                                        
                                         }?>
                             </tr> <?php $counter++; } ?>
           </tbody>
-          </div>
-            </div>
+
+                                    </div>
+                                    </div>
+                   
                 </div>
             </div>
         </table>
