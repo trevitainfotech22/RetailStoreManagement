@@ -79,7 +79,7 @@ if (!isset($_SESSION['userid'])) {
                            echo 'Salesmanager';
                            }?></td>
                             </tr> <?php $counter++; } ?>
-                                </tbody>
+                     </tbody>
                            
                             </table>
                         </div>
