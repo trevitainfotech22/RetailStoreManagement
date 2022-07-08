@@ -59,18 +59,22 @@ if (!isset($_SESSION['userid'])) {
                                         ?>
                                     <tr>
                                     <?php if($res['role']==1){ 
-                                        echo "<td>".  $counter ."</td>";
-                                        echo "<td>" . $res['name'] ."</td>";
-                                        echo "<td>" .$res['username'] ."</td>";
-                                        echo "<td>".  $res['password'] ."</td>";
+                                        echo "<td>"  $counter "</td>"
+                                        echo "<td>"  $res['name'] "</td>"
+                                        echo "<td>" $res['username'] "</td>"
+                                        echo "<td>"  $res['password'] "</td>"
                                         
-                                        echo "<td>";
-                                        echo "<button><a href='editadmin.php'> Edit</a>";
-                                        echo  "</button>";
-                                        echo   "<button> <a href="">".Delete."</a>";
-                                        echo   "</button>";
+                                        echo "<td>"
+                                             echo <button>
+                                                <a href="editadmin.php">
+                                                            Edit</a>
+                                            </button>
+                                             <button>
+                                                 <a href="">
+                                                     Delete</a>
+                                              </button>
                       
-                                         echo "</td>";
+                                         echo "</td>"
                                         }?>
                             </tr> <?php $counter++; } ?>
           </tbody>
