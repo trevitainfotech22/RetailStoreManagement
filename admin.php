@@ -40,7 +40,7 @@ if (!isset($_SESSION['userid'])) {
                         &nbsp;&nbsp;&nbsp;<h2 class="title1">ADMIN</h2>
                         <br>
                         &nbsp;&nbsp;&nbsp;<button><a href="addadmin.php" style="font-size: 20px">
-                                Add new Admin &raquo;</a></button>
+                                Add Admin &raquo;</a></button>
 
             <br><br>
             <div align="center">
