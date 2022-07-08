@@ -65,9 +65,15 @@ if (!isset($_SESSION['userid'])) {
                                         echo "<td>".  $res['password'] ."</td>";
                                         
                                         echo "<td>";
-                                        echo "<button><a href='editadmin.php'> Edit</a>";
+                                        echo "<button>";
+                                        echo "<a href='editadmin.php'>";
+                                        echo "Edit";
+                                        echo "</a>";
                                         echo  "</button>";
-                                        echo   "<button> <a href="">".Delete."</a>";
+                                        echo   "<button>";
+                                        echo " <a href=''>";
+                                        echo "Delete";
+                                        echo "</a>";
                                         echo   "</button>";
                       
                                          echo "</td>";
