@@ -102,56 +102,7 @@ if (!isset($_SESSION['userid'])) {
                 <div class="clearfix"></div>
                 <br /><br />
                 
-                <div class="col-div-8">
-                    <div class="box-8">
-                        <div class="content-box">
-                            <p><b> USER DETAILS </b></p>
-                            <br/> 
-                            <table >
-                                <thead>                                                                
-                                    <th>id</th>
-                                    <th>name</th>
-                                    <th>username</th>
-                                    <th>password</th>
-                                    <th>Role</th>
-                                </thead>
-                                <tbody>
-                                    <?php $counter=1;
-                                    
-                                    while($res = mysqli_fetch_array($result)){
-                                        ?>
-                                    <tr>
-                                        <td> <?php echo $counter ?></td>
-                                        <td> <?php echo $res['name'] ?></td>
-                                        <td> <?php echo $res['username'] ?></td>
-                                        <td> <?php echo $res['password'] ?></td>
-                                        <td><?php if($res['role']==1){
-                                                     echo 'Admin';
-                              }
-                            if($res['role']==2){
-                          echo 'StoreManager';
-                         }
-                           if($res['role']==3){
-                          echo 'Saleaman';
-                           }
-                           if($res['role']==4){
-                             echo 'Kitchen';
-                        }
-                           if($res['role']==5){
-                          echo 'DeliveryBoy';
-                            }
-                         if($res['role']==6){
-                           echo 'Salesmanager';
-                           }?></td>
-                            </tr> <?php $counter++; } ?>
-                                </tbody>
-                           
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                    
-                
+           
        
 
                 

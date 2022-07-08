@@ -1,5 +1,8 @@
 <?php 
 session_start();
+include_once ('./Database/mydb.php');
+$result = mysqli_query($connection,"SELECT * FROM userdetails ORDER BY role ASC");
+
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
@@ -42,39 +45,38 @@ if (!isset($_SESSION['userid'])) {
             <br><br>
             <div align="center">
                 <table class="table"> 
-                    <tr>
+                    <thead>
                         <th>SR.NO</th>
                         <th>NAME</th>
                         <th>USERNAME</th>
                         <th>PASSWORD</th>
                         <th>ACTION</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button>
-                                <a href="editadmin.php">
-                                    Edit</a>
-                            </button>
-                             <button>
-                                <a href="">
-                                    Delete</a>
-                            </button>
+                    </thead>
+                    <tbody>
+                    <?php $counter=1;
+                                    
+                                    while($res = mysqli_fetch_array($result)){
+                                        ?>
+                                    <tr>
+                                        <td> <?php echo $counter ?></td>
+                                        <td> <?php echo $res['name'] ?></td>
+                                        <td> <?php echo $res['username'] ?></td>
+                                        <td> <?php echo $res['password'] ?></td>
+                                        <td><?php if($res['role']==1){ }?></td>
+                                         <td>
+                                            <button>
+                                                <a href="editadmin.php">
+                                                            Edit</a>
+                                            </button>
+                                             <button>
+                                                 <a href="">
+                                                     Delete</a>
+                                              </button>
                       
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
+                                         </td>
+                            </tr> <?php $counter++; } ?>
+          </tbody>
+                   
                 </div>
             </div>
         </table>
