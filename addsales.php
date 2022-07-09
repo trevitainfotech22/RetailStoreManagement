@@ -3,8 +3,8 @@ include_once ('./Database/mydb.php');
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
-include_once ('./Database/mydb.php');
-if(isset($_POST['submit']))
+
+if($_POST['submit'])
 {
  $name= mysqli_real_escape_string($connection, $_POST['name']);
  $date=mysqli_real_escape_string($connection, $_POST['date']);
@@ -13,8 +13,9 @@ if(isset($_POST['submit']))
  $address=mysqli_real_escape_string($connection, $_POST['address']);
  $password=mysqli_real_escape_string($connection, $_POST['password']);
  $proof=mysqli_real_escape_string($connection, $_POST['proof']);
+ $role = 3;
 
-$query1 = mysqli_query($connection, "insert into userdetails(name,username,password,role) values('{$name}','{$username}','{$password}','3')") or die(mysqli_error($connection));
+$query1 = mysqli_query($connection, "insert into userdetails(name,username,password,role) values('{$name}','{$username}','{$password}','{$role}')") or die(mysqli_error($connection));
 
 $query2 = mysqli_query($connection, "insert into personnaldetails(p_name,p_address,p_idproof) values('{$name}','{$address}','{$proof}')") or die(mysqli_error($connection));
 
@@ -26,8 +27,6 @@ $query3 = mysqli_query($connection, "insert into salesman(s_dob,s_phone) values(
  
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
