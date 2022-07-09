@@ -1,5 +1,6 @@
 <?php 
 include_once ('./Database/mydb.php');
+$result = mysqli_query($connection,"SELECT * FROM product ");
 
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
@@ -41,6 +42,8 @@ if (!isset($_SESSION['userid'])) {
                                 Add Product &raquo;</a></button>
 
             <br><br>
+            <div class="col-div-8">
+                    <div class="box-8">
             <div align="center">
                 <table class="table"> 
                     <tr>
@@ -51,34 +54,32 @@ if (!isset($_SESSION['userid'])) {
                         <th>CATEORY</th>
                         <th>ACTION</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button>
-                                <a href="editproduct.php">
-                                    Edit</a>
-                            </button>
-                             <button>
-                                <a href="">
-                                    Delete</a>
-                            </button>
-                      
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
+                    <tbody>
+                    <?php $counter=1;
+                                    if (isset($_GET['did'])) {
+                                        $did = $_GET['did'];
+                                        $deleteq = mysqli_query($connection, "delete from product where id ='{$did}'")or die(mysqli_error($connection));
+                                        if ($deleteq) {
+                                            echo "<script>alert('Record Deleted');</script>";
+                                            echo "<script> window.location='product.php'; </script>";
+                                        }
+                                    }
+                                    while($res = mysqli_fetch_array($result)){
+                                        
+                                   echo" <tr>";
+                                    
+                                         echo "<td>". $res['pr_id']."</td>";
+                                        echo "<td>".$res['pr_productname']."</td>";
+                                        echo "<td>". $res['pr_size']."</td>";
+                                        echo "<td>".$res['pr_price']."</td>";
+                                        echo "<td>".$res['pr_category']."</td>";
+                                        echo "<td> <a href='editproduct.php?eid={$res['pr_id']}'>Edit</a> | <a href='product.php ? did={$res['pr_id']}]'>Delete</a> </td>";
+                                        
+                                        }?>
+                            </tr> <?php $counter++;  ?>
+          </tbody>
+</div>
+</div>
                 </div>
             </div>
         </table>

@@ -41,6 +41,8 @@ if (!isset($_SESSION['userid'])) {
                                 Add SalesManager &raquo;</a></button>
 
             <br><br>
+            <div class="col-div-8">
+                    <div class="box-8">
             <div align="center">
                 <table class="table"> 
                     <tr>
@@ -100,6 +102,8 @@ if (!isset($_SESSION['userid'])) {
                         <td></td>
 
                     </tr>
+</div>
+</div>
                 </div>
             </div>
         </table>
