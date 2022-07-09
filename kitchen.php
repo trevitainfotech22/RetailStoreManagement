@@ -1,5 +1,5 @@
 <?php 
-session_start();
+ 
 include_once ('./Database/mydb.php');
 $result = mysqli_query($connection,"SELECT * FROM userdetails ORDER BY role ASC");
 
