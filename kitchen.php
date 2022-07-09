@@ -65,7 +65,7 @@ if (!isset($_SESSION['userid'])) {
                                         echo "<td>".$res['name']."</td>";
                                         echo "<td>". $res['username']."</td>";
                                         echo "<td>".$res['password']."</td>";
-                                        
+                                        echo "<td> <a href='editkitchen.php?id={$res['id']}'>Edit</a> | <a href='kitchen.php ? did={$res['id']}]'>Delete</a> </td>";
                                         }?>
                             </tr> <?php $counter++; } ?>
           </tbody>
