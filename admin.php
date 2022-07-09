@@ -74,7 +74,7 @@ if (!isset($_SESSION['userid'])) {
                                         echo "<td>".$res['name']."</td>";
                                         echo "<td>". $res['username']."</td>";
                                         echo "<td>".$res['password']."</td>";
-                                        echo "<td> <a href='editadmin.php?id={$res['id']}'>Edit</a> | <a href='admin.php ? did={$res['id']}]'>Delete</a> </td>";
+                                        echo "<td> <a href='editadmin.php?eid={$res['id']}'>Edit</a> | <a href='admin.php ? did={$res['id']}]'>Delete</a> </td>";
                                         
                                         }?>
                             </tr> <?php $counter++; } ?>
