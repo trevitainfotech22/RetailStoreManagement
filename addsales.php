@@ -12,14 +12,17 @@ if(isset($_POST['submit']))
  $username= mysqli_real_escape_string($connection, $_POST['username']);
  $address=mysqli_real_escape_string($connection, $_POST['address']);
  $password=mysqli_real_escape_string($connection, $_POST['password']);
- $proof=mysqli_real_escape_string($connection, $_POST['proof']);
+ $proof="string";
+ $role = 3;
 
-$query1 = mysqli_query($connection, "insert into userdetails(name,username,password,role) values('{$name}','{$username}','{$password}','3')") or die(mysqli_error($connection));
+ $query = mysqli_query($connection, "insert into userdetails(name,username,password,role) values('{$name}','{$username}','{$password}','{$role}')") or die(mysqli_error($connection));
 
-$query2 = mysqli_query($connection, "insert into personnaldetails(p_name,p_address,p_idproof) values('{$name}','{$address}','{$proof}')") or die(mysqli_error($connection));
+$query1 = mysqli_query($connection, "insert into personaldetail(p_name,p_address,p_username,p_password) values('{$name}','{$address}','{$username}' ,'{$password}')") or die(mysqli_error($connection));
+$lastinsertid = mysqli_insert_id($connection);
+echo($lastinsertid);
 
-$query3 = mysqli_query($connection, "insert into salesman(s_dob,s_phone) values('{$date}','{$phone}')") or die(mysqli_error($connection));
- if($query1 && $query2 && $query3)
+$query2 = mysqli_query($connection, "insert into sale(s_dob,s_phone,p_id) values('{$date}','{$phone}','{$lastinsertid}')") or die(mysqli_error($connection));
+ if($query1 && $query2 )
  {
  echo "<script>alert('record inserted');</script>";
  }
@@ -58,7 +61,7 @@ $query3 = mysqli_query($connection, "insert into salesman(s_dob,s_phone) values(
                 <br><br>
                 &nbsp;&nbsp;&nbsp;<h2 class="title1">SALESMAN</h2>
                 <div class="container">
-                    <form  method="post">
+                    <form  method="post" enctype="multipart/form-data">
                         <p>
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
@@ -105,16 +108,17 @@ $query3 = mysqli_query($connection, "insert into salesman(s_dob,s_phone) values(
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 
                             <label  STYLE="color: #818181" for="id">ID Proof</label> &nbsp;&nbsp;&nbsp;
-                            <input type="file" id="proof" name="proof" placeholder="Your ID Proof.."  required>
+                            <input type="file" id="proof" name="proof" placeholder="Your ID Proof.."  >
 
                         </p>
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                        <center> <button type="submit" name="submit" > 
+                        <center> <button type="submit" name="submit" value = "submit" > 
                                             Add Salesman
                                     </button>
-                        </center>        
+                        </center>   
+</form>     
                 </div>
         </section>
 

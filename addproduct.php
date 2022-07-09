@@ -73,8 +73,14 @@ if (!isset($_SESSION['userid'])) {
 
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; 
 
-                            <label STYLE="color: #818181"  for="category"> Category </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="text" id="category" name="category" placeholder=" Category Product.."  required>
+        <label STYLE="color: #818181"  for="category"> Category </label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select name="category" id="category">
+        <option value="select">select</option>
+        <option value="bread">Bread</option>
+         <option value="Jam">Jam</option>
+         <option value="kitchen">Kitchen Product</option>
+        
+        </select>
 
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </p>

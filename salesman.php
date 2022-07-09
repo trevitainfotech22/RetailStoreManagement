@@ -1,5 +1,9 @@
 <?php 
 include_once ('./Database/mydb.php');
+$result = mysqli_query($connection,"SELECT personaldetail.p_name,personaldetail.p_address,personaldetail.p_username,personaldetail.p_password,sale.s_dob,sale.s_phone 
+FROM personaldetail INNER JOIN sale ON personaldetail.p_id = sale.s_id;");
+
+
 
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
@@ -48,54 +52,46 @@ if (!isset($_SESSION['userid'])) {
                     <tr>
                         <th>SR.NO</th>
                         <th>NAME</th>
-                        <th>PHONE-NO</th>
-		        <th>ADDRESS</th>
-			<th>ID-PROOF</th>
-			<th>DOB</th>
                         <th>USERNAME</th>
                         <th>PASSWORD</th>
+                        <th>ADDRESS</th>
+                        <th>DOB</th>
+                        <th>PHONE-NO</th>
                         <th>ACTION</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      
-                        
-                        
-                        <td>
-                            <button>
-                                <a href="editsales.php">
-                                    Edit</a>
-                            |
-                                <a href="">
-                                    Delete</a>
-                            </button>
-                      
-                        </td>
+                    <tbody>
+                    <?php $counter=1;
+                                    if (isset($_GET['did'])) {
+                                        $did = $_GET['did'];
+                                        $deleteq = mysqli_query($connection, "delete from personaldetails where id ='{$did}'")or die(mysqli_error($connection));
+                                        if ($deleteq) {
+                                            echo "<script>alert('Record Deleted');</script>";
+                                            echo "<script> window.location='salesman.php'; </script>";
+                                        }
+                                    }
+                                    while($res = mysqli_fetch_array($result)) 
+                                    {
+                                        ?>
+                                    <tr>
+                                    <?php 
+                                         echo "<td>". $counter."</td>";
+                                        echo "<td>".$res['p_name']."</td>";
+                                        echo "<td>". $res['p_username']."</td>";
+                                        echo "<td>".$res['p_password']."</td>";
+                                        echo "<td>".$res['p_address']."</td>";
+                                        echo "<td>". $res['s_dob']."</td>";
+                                        echo "<td>".$res['s_phone']."</td>";
+                                       //echo "<td> <a href='editsales.php?eid={$res['p_id','id','s_id']}'>Edit</a> | <a href='salesman.php ? did={$res['p_id','id','s_id']}]'>Delete</a> </td>";
+                                        
+                                        ?>
+                            </tr> <?php $counter++; } ?>
+          </tbody>
 
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
 </div>
 </div>
                 </div>
             </div>
+                               
         </table>
 
 
