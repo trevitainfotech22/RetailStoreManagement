@@ -37,9 +37,9 @@
                     </li>
                    
                     <li class="nav-link">
-                        <a href="stsalesman.php">
+                        <a href="storeuser.php">
                             <i class='bx bx-male icon' ></i>
-                            <span class="text nav-text"> Salesman </span>
+                            <span class="text nav-text"> Store User </span>
                         </a>
                     </li>
 
