@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include_once ('./Database/mydb.php');
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
@@ -58,7 +58,7 @@ $query3 = mysqli_query($connection, "insert into salesman(s_dob,s_phone) values(
                 <br><br>
                 &nbsp;&nbsp;&nbsp;<h2 class="title1">SALESMAN</h2>
                 <div class="container">
-                    <form action="/" method="post">
+                    <form  method="post">
                         <p>
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 

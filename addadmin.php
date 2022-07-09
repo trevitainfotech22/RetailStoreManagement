@@ -1,9 +1,9 @@
 <?php 
-session_start();
+include_once ('./Database/mydb.php');
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
-include_once ('./Database/mydb.php');
+
 if($_POST['submit'])
 {
  $name= mysqli_real_escape_string($connection, $_POST['name']);

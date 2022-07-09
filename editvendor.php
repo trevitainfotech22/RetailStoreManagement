@@ -1,5 +1,6 @@
 <?php 
-session_start();
+include_once ('./Database/mydb.php');
+
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
@@ -34,7 +35,7 @@ if (!isset($_SESSION['userid'])) {
                 <br><br>
                 &nbsp;&nbsp;&nbsp;<h2 class="title1">EDIT VENDOR</h2>
                 <div class="container">
-                    <form action="/">
+                    <form method="post">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <p>
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;

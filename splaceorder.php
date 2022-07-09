@@ -1,5 +1,6 @@
 <?php 
-session_start();
+include_once ('./Database/mydb.php');
+
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
@@ -33,7 +34,7 @@ if (!isset($_SESSION['userid'])) {
                 <br><br>
                 &nbsp;&nbsp;&nbsp;<h2 class="title1">PLACE-ORDER</h2>
                 <div class="container">
-                    <form action="/">
+                    <form method="post">
                         <p>
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 

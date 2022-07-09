@@ -1,5 +1,6 @@
 <?php 
-session_start();
+include_once ('./Database/mydb.php');
+
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
@@ -41,7 +42,7 @@ if (!isset($_SESSION['userid'])) {
 
             <br><br>
             <div align="center">
-                <table class="table"> 
+                <table class="table" > 
                     <tr>
                        
                     <th>SR.NO</th>
@@ -56,35 +57,7 @@ if (!isset($_SESSION['userid'])) {
                    
 
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        
-                      
-                        
-                        
-                    
-
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                       
-                    </tr>
+                   
                 </div>
             </div>
         </table>

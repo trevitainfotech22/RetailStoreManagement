@@ -1,5 +1,6 @@
 <?php 
-session_start();
+include_once ('./Database/mydb.php');
+
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }

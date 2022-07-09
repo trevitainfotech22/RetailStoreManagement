@@ -1,6 +1,6 @@
 <?php
-session_start();
-$connection = new mysqli("localhost", "root", "", "mydb");
+include_once ('./Database/mydb.php');
+
 
 if ($_POST) {
     $username = $_POST['username'];
