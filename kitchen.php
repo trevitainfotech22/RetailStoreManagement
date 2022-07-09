@@ -56,6 +56,14 @@ if (!isset($_SESSION['userid'])) {
                         <th>ACTION</th>
                     </thead>
                     <?php $counter=1;
+                                    if (isset($_GET['did'])) {
+                                        $did = $_GET['did'];
+                                        $deleteq = mysqli_query($connection, "delete from userdetails where id ='{$did}'")or die(mysqli_error($connection));
+                                        if ($deleteq) {
+                                            echo "<script>alert('Record Deleted');</script>";
+                                            echo "<script> window.location='kitchen.php'; </script>";
+                                        }
+                                    }
                                     
                                     while($res = mysqli_fetch_array($result)){
                                         ?>
@@ -64,9 +72,10 @@ if (!isset($_SESSION['userid'])) {
                                         echo "<td>". $counter."</td>";
                                         echo "<td>".$res['name']."</td>";
                                         echo "<td>". $res['username']."</td>";
-                                        echo "<td>".$res['password']."</td>";} ?> 
-                                        <td> <a href="editkitchen.php?id=<?php echo $res['id'] ?>}">Edit</a> | <?php echo "<a href='kitchen.php ? did={$res['id']}]'>Delete</a> </td>"; ?>
-                            </tr> <?php $counter++; } ?>
+                                        echo "<td>".$res['password']."</td>";
+                                       echo "<td> <a href='editkitchen.php?eid={$res['id']}'>Edit</a> | <a href='kitchen.php ? did={$res['id']}]'>Delete</a> </td>";
+                                    }?>
+                            </tr> <?php $counter++;} ?>
           </tbody>
 
                 </div>

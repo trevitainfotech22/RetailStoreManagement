@@ -1,8 +1,39 @@
 <?php 
-session_start();
+
+include_once ('./Database/mydb.php');
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
+
+$editid = $_GET['eid'];
+
+if(!isset($_GET['eid']) || empty($_GET['eid']))
+{
+    header("location:kitchen.php");
+    
+}
+ $selectq = mysqli_query($connection, "select * from userdetails where id='{$editid}'") or die(mysqli_error($connection));
+ $selectrow = mysqli_fetch_array($selectq);
+$mag = "";
+
+
+if($_POST)
+{
+    $id = $_POST['id'];
+    $name= mysqli_real_escape_string($connection, $_POST['name']);
+    $username=mysqli_real_escape_string($connection, $_POST['username']);
+    $password=mysqli_real_escape_string($connection, $_POST['password']);
+    
+    
+    $query = mysqli_query($connection, "update `userdetails` set `name` = '{$name}',`username` = '{$username}',`password` = '{$password}'  where `id` ='{$id}'") or die(mysqli_error($connection));
+    
+   
+    if($query)
+    {
+        echo "<script>alert('record updated'); window.location='kitchen.php';</script>";
+    }        
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,27 +69,29 @@ if (!isset($_SESSION['userid'])) {
                         <p>
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
+                            <input type="hidden" name="id" value="<?php echo $selectrow['id'] ?>">
+
 
                             <label STYLE="color: #818181"  for="name"> Name</label>  &nbsp;&nbsp;&nbsp;
-                            <input type="text" id="name" name="name" placeholder="Your name.."  required>
+                            <input type="text" id="name" value="<?php echo $selectrow['name'] ?>" name="name" placeholder="Your name.."  required>
 
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
                             <label STYLE="color: #818181" for="uname">UserName</label>  &nbsp;&nbsp;&nbsp;
-                            <input type="text" id="username" name="username" placeholder="Your  Username.." required>
+                            <input type="text" id="username" value="<?php echo $selectrow['username'] ?>" name="username" placeholder="Your  Username.." required>
 
                         </p>
 
                         &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
 
                         <label  STYLE="color: #818181" for="pass">Password</label> &nbsp;&nbsp;&nbsp;
-                        <input type="password" id="pass" name="password" placeholder="Your Password.."  required>
+                        <input type="password" id="pass" value="<?php echo $selectrow['password'] ?>" name="password" placeholder="Your Password.."  required>
                         <br>
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                         <center> <input type="submit" value="Update"> 
-                              <input type="submit" value="Reset"> 
+                            
 
                         </center>        
                 </div>

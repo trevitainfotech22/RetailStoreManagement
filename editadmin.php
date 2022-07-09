@@ -89,7 +89,7 @@ if($_POST)
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                         <center> <input type="submit" value="Update"> 
-                              <input type="submit" value="Reset"> 
+                              
 
                         </center>        
                 </div>

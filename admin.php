@@ -63,14 +63,14 @@ if (!isset($_SESSION['userid'])) {
                                         $deleteq = mysqli_query($connection, "delete from userdetails where id ='{$did}'")or die(mysqli_error($connection));
                                         if ($deleteq) {
                                             echo "<script>alert('Record Deleted');</script>";
-                                            echo "<script> window.location='user.php'; </script>";
+                                            echo "<script> window.location='admin.php'; </script>";
                                         }
                                     }
                                     while($res = mysqli_fetch_array($result)){
                                         ?>
                                     <tr>
                                     <?php if($res['role']==1){ 
-                                        echo "<td>". $res['id']."</td>";
+                                         echo "<td>". $counter."</td>";
                                         echo "<td>".$res['name']."</td>";
                                         echo "<td>". $res['username']."</td>";
                                         echo "<td>".$res['password']."</td>";
