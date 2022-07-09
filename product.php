@@ -40,6 +40,8 @@ if (!isset($_SESSION['userid'])) {
                         <br>
                         &nbsp;&nbsp;&nbsp;<button><a href="addproduct.php" style="font-size: 20px">
                                 Add Product &raquo;</a></button>
+                                &nbsp;&nbsp;&nbsp;<button><a href="addcategory.php" style="font-size: 20px">
+                                Add Cateory &raquo;</a></button>
 
             <br><br>
             <div class="col-div-8">
