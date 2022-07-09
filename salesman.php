@@ -69,8 +69,7 @@ if (!isset($_SESSION['userid'])) {
                             <button>
                                 <a href="editsales.php">
                                     Edit</a>
-                            </button>
-                             <button>
+                            |
                                 <a href="">
                                     Delete</a>
                             </button>
