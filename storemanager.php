@@ -55,27 +55,24 @@ if (!isset($_SESSION['userid'])) {
                         <th>ACTION</th>
                     </thead>
                     <?php $counter=1;
-                                    
+                                    if (isset($_GET['did'])) {
+                                        $did = $_GET['did'];
+                                        $deleteq = mysqli_query($connection, "delete from userdetails where id ='{$did}'")or die(mysqli_error($connection));
+                                        if ($deleteq) {
+                                            echo "<script>alert('Record Deleted');</script>";
+                                            echo "<script> window.location='storemanager.php'; </script>";
+                                        }
+                                    }
                                     while($res = mysqli_fetch_array($result)){
                                         ?>
                                     <tr>
                                     <?php if($res['role']==2){ 
-                                        echo "<td>". $counter."</td>";
+                                         echo "<td>". $counter."</td>";
                                         echo "<td>".$res['name']."</td>";
                                         echo "<td>". $res['username']."</td>";
                                         echo "<td>".$res['password']."</td>";
-                                        echo "<td>";
-                                        echo "<button>";
-                                        echo "<a href='editstmanager.php'>";
-                                        echo 'Edit';
-                                        echo "</a>";        
-                                        echo "</button>";
-                                        echo " <button>";
-                                        echo "<a href=''>";
-                                        echo 'Delete';
-                                        echo " </a>";                   
-                                        echo " </button>";     
-                                         echo "</td>";
+                                        echo "<td> <a href='editstmanager.php?eid={$res['id']}'>Edit</a> | <a href='storemanager.php ? did={$res['id']}]'>Delete</a> </td>";
+                                        
                                         }?>
                             </tr> <?php $counter++; } ?>
           </tbody>
