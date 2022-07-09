@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 include_once ('./Database/mydb.php');
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
@@ -25,8 +25,9 @@ if($_POST)
     $password=mysqli_real_escape_string($connection, $_POST['password']);
     
     
-    $query = mysqli_query($connection, "update userdetails set name = '{$name}',username = '{$username}',password = '{$password}' , where id='{$eid}'") or die(mysqli_error($connection));
+    $query = mysqli_query($connection, "update `userdetails` set `name` = '{$name}',`username` = '{$username}',`password` = '{$password}'  where `id` ='{$id}'") or die(mysqli_error($connection));
     
+   
     if($query)
     {
         echo "<script>alert('record updated'); window.location='admin.php';</script>";
