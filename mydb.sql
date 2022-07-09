@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2022 at 01:30 PM
+-- Generation Time: Jul 09, 2022 at 04:39 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -24,26 +24,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table `delivery`
 --
 
-CREATE TABLE `admin` (
-  `a_id` int(10) NOT NULL,
-  `p_id` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `delveryboy`
---
-
-CREATE TABLE `delveryboy` (
-  `d_id` int(100) NOT NULL,
-  `d_dob` date NOT NULL,
-  `d_rootno` int(100) NOT NULL,
-  `d_carno` int(100) NOT NULL,
-  `p_id` int(100) NOT NULL
+CREATE TABLE `delivery` (
+  `d_id` int(11) NOT NULL,
+  `d_dob` varchar(25) NOT NULL,
+  `d_rootno` double NOT NULL,
+  `d_carno` double NOT NULL,
+  `p_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -53,8 +42,8 @@ CREATE TABLE `delveryboy` (
 --
 
 CREATE TABLE `kitchen` (
-  `k_id` int(100) NOT NULL,
-  `p_id` int(100) NOT NULL
+  `k_id` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -92,23 +81,24 @@ CREATE TABLE `orderitem` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personnaldetails`
+-- Table structure for table `personaldetail`
 --
 
-CREATE TABLE `personnaldetails` (
-  `p_id` int(100) NOT NULL,
-  `p_name` varchar(100) NOT NULL,
-  `p_address` varchar(200) NOT NULL,
-  `p_idproof` varchar(45) NOT NULL,
-  `u_id` int(6) NOT NULL
+CREATE TABLE `personaldetail` (
+  `p_id` int(10) NOT NULL,
+  `p_name` varchar(255) NOT NULL,
+  `p_address` varchar(255) NOT NULL,
+  `p_username` varchar(255) NOT NULL,
+  `p_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `personnaldetails`
+-- Dumping data for table `personaldetail`
 --
 
-INSERT INTO `personnaldetails` (`p_id`, `p_name`, `p_address`, `p_idproof`, `u_id`) VALUES
-(1, 'shivani', '1234', '', 1);
+INSERT INTO `personaldetail` (`p_id`, `p_name`, `p_address`, `p_username`, `p_password`) VALUES
+(1, 'Rohit Sharma', '34,shree nagar ahmedabad', 'rohit', '789'),
+(2, 'demo', 'sdsaf', 'demo1', '1234');
 
 -- --------------------------------------------------------
 
@@ -119,22 +109,38 @@ INSERT INTO `personnaldetails` (`p_id`, `p_name`, `p_address`, `p_idproof`, `u_i
 CREATE TABLE `product` (
   `pr_id` int(100) NOT NULL,
   `pr_productname` varchar(100) NOT NULL,
-  `pr-size` int(100) NOT NULL,
-  `pr_price` double NOT NULL
+  `pr_size` int(100) NOT NULL,
+  `pr_price` double NOT NULL,
+  `pr_category` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`pr_id`, `pr_productname`, `pr_size`, `pr_price`, `pr_category`) VALUES
+(1, 'kitchen magic', 2, 200, 'kitchen product');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salesman`
+-- Table structure for table `sale`
 --
 
-CREATE TABLE `salesman` (
-  `s_id` int(100) NOT NULL,
-  `s_dob` varchar(50) NOT NULL,
-  `s_phone` int(10) NOT NULL,
-  `p_id` int(100) NOT NULL
+CREATE TABLE `sale` (
+  `s_id` int(11) NOT NULL,
+  `s_dob` varchar(255) NOT NULL,
+  `s_phone` bigint(10) NOT NULL,
+  `p_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sale`
+--
+
+INSERT INTO `sale` (`s_id`, `s_dob`, `s_phone`, `p_id`) VALUES
+(1, '2000-04-24', 9567487560, 1),
+(2, '2001-02-04', 9589485923, 2);
 
 -- --------------------------------------------------------
 
@@ -143,12 +149,11 @@ CREATE TABLE `salesman` (
 --
 
 CREATE TABLE `salesmanager` (
-  `sa_id` int(100) NOT NULL,
-  `sa_shopname` varchar(100) NOT NULL,
-  `sa_owername` varchar(100) NOT NULL,
-  `sa_feedback` varchar(200) NOT NULL,
-  `s_id` int(100) NOT NULL,
-  `p_id` int(100) NOT NULL
+  `sa_id` int(11) NOT NULL,
+  `sa_shopname` varchar(255) NOT NULL,
+  `sa_owername` varchar(255) NOT NULL,
+  `sa_feedback` varchar(255) NOT NULL,
+  `p_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -158,8 +163,8 @@ CREATE TABLE `salesmanager` (
 --
 
 CREATE TABLE `storemanager` (
-  `sm_id` int(100) NOT NULL,
-  `p_id` int(100) NOT NULL
+  `sm_id` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -169,7 +174,7 @@ CREATE TABLE `storemanager` (
 --
 
 CREATE TABLE `userdetails` (
-  `id` int(6) NOT NULL,
+  `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -181,16 +186,9 @@ CREATE TABLE `userdetails` (
 --
 
 INSERT INTO `userdetails` (`id`, `name`, `username`, `password`, `role`) VALUES
-(1, 'Shivani Panchal', 'shivani', '1234', 1),
-(2, 'Rohit Sharma', 'rohit', '789', 2),
-(3, 'Kunj Patel', 'kunj', '2345', 3),
-(4, 'Riya Sukhadia', 'riya', 'riya123', 4),
-(5, 'Ravi Singh', 'ravi', 'ravi124', 5),
-(6, 'Parth Machi', 'parth', '67890', 6),
-(7, 'riddhi patel', 'riddhi', 'r123', 3),
-(12, 'Juned Pathan', 'Juned', 'J123', 1),
-(13, 'demo', 'demo123', '1234', 1),
-(14, 'kiran patel', 'kiran', '3456', 1);
+(1, 'Shivani Panchal', 'shivani', 'S1234', 1),
+(2, 'Riddhi Patel', 'riddhi', '123', 1),
+(4, 'demo', 'demo1', '1234', 3);
 
 -- --------------------------------------------------------
 
@@ -208,16 +206,9 @@ CREATE TABLE `vendor` (
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `delivery`
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`a_id`),
-  ADD KEY `test` (`p_id`);
-
---
--- Indexes for table `delveryboy`
---
-ALTER TABLE `delveryboy`
+ALTER TABLE `delivery`
   ADD PRIMARY KEY (`d_id`),
   ADD KEY `test3` (`p_id`);
 
@@ -226,7 +217,7 @@ ALTER TABLE `delveryboy`
 --
 ALTER TABLE `kitchen`
   ADD PRIMARY KEY (`k_id`),
-  ADD KEY `test4` (`p_id`);
+  ADD KEY `test2` (`p_id`);
 
 --
 -- Indexes for table `order`
@@ -246,11 +237,10 @@ ALTER TABLE `orderitem`
   ADD KEY `pr1` (`p_id`);
 
 --
--- Indexes for table `personnaldetails`
+-- Indexes for table `personaldetail`
 --
-ALTER TABLE `personnaldetails`
-  ADD PRIMARY KEY (`p_id`),
-  ADD KEY `u_id` (`u_id`);
+ALTER TABLE `personaldetail`
+  ADD PRIMARY KEY (`p_id`);
 
 --
 -- Indexes for table `product`
@@ -259,26 +249,25 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`pr_id`);
 
 --
--- Indexes for table `salesman`
+-- Indexes for table `sale`
 --
-ALTER TABLE `salesman`
+ALTER TABLE `sale`
   ADD PRIMARY KEY (`s_id`),
-  ADD KEY `test1` (`p_id`);
+  ADD KEY `p_id` (`p_id`);
 
 --
 -- Indexes for table `salesmanager`
 --
 ALTER TABLE `salesmanager`
   ADD PRIMARY KEY (`sa_id`),
-  ADD KEY `test5` (`p_id`),
-  ADD KEY `test6` (`s_id`);
+  ADD KEY `test6` (`p_id`);
 
 --
 -- Indexes for table `storemanager`
 --
 ALTER TABLE `storemanager`
   ADD PRIMARY KEY (`sm_id`),
-  ADD KEY `test2` (`p_id`);
+  ADD KEY `test` (`p_id`);
 
 --
 -- Indexes for table `userdetails`
@@ -298,22 +287,16 @@ ALTER TABLE `vendor`
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `delivery`
 --
-ALTER TABLE `admin`
-  MODIFY `a_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `delveryboy`
---
-ALTER TABLE `delveryboy`
-  MODIFY `d_id` int(100) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `delivery`
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kitchen`
 --
 ALTER TABLE `kitchen`
-  MODIFY `k_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `k_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -328,56 +311,56 @@ ALTER TABLE `orderitem`
   MODIFY `oi_id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `personaldetail`
+--
+ALTER TABLE `personaldetail`
+  MODIFY `p_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `pr_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `pr_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
--- AUTO_INCREMENT for table `salesman`
+-- AUTO_INCREMENT for table `sale`
 --
-ALTER TABLE `salesman`
-  MODIFY `s_id` int(100) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `sale`
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `salesmanager`
 --
 ALTER TABLE `salesmanager`
-  MODIFY `sa_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `storemanager`
 --
 ALTER TABLE `storemanager`
-  MODIFY `sm_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `sm_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `admin`
+-- Constraints for table `delivery`
 --
-ALTER TABLE `admin`
-  ADD CONSTRAINT `test` FOREIGN KEY (`p_id`) REFERENCES `personnaldetails` (`p_id`);
-
---
--- Constraints for table `delveryboy`
---
-ALTER TABLE `delveryboy`
-  ADD CONSTRAINT `test3` FOREIGN KEY (`p_id`) REFERENCES `personnaldetails` (`p_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `delivery`
+  ADD CONSTRAINT `test3` FOREIGN KEY (`p_id`) REFERENCES `personaldetail` (`p_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `kitchen`
 --
 ALTER TABLE `kitchen`
-  ADD CONSTRAINT `test4` FOREIGN KEY (`p_id`) REFERENCES `personnaldetails` (`p_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `test2` FOREIGN KEY (`p_id`) REFERENCES `personaldetail` (`p_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `order`
@@ -395,28 +378,22 @@ ALTER TABLE `orderitem`
   ADD CONSTRAINT `pr1` FOREIGN KEY (`p_id`) REFERENCES `product` (`pr_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `personnaldetails`
+-- Constraints for table `sale`
 --
-ALTER TABLE `personnaldetails`
-  ADD CONSTRAINT `personnaldetails_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `userdetails` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `salesman`
---
-ALTER TABLE `salesman`
-  ADD CONSTRAINT `test1` FOREIGN KEY (`p_id`) REFERENCES `personnaldetails` (`p_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sale`
+  ADD CONSTRAINT `p_id` FOREIGN KEY (`p_id`) REFERENCES `personaldetail` (`p_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `salesmanager`
 --
 ALTER TABLE `salesmanager`
-  ADD CONSTRAINT `test6` FOREIGN KEY (`s_id`) REFERENCES `salesman` (`s_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `test6` FOREIGN KEY (`p_id`) REFERENCES `personaldetail` (`p_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `storemanager`
 --
 ALTER TABLE `storemanager`
-  ADD CONSTRAINT `test2` FOREIGN KEY (`p_id`) REFERENCES `personnaldetails` (`p_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `test` FOREIGN KEY (`p_id`) REFERENCES `personaldetail` (`p_id`);
 
 --
 -- Constraints for table `vendor`
