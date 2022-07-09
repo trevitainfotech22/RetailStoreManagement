@@ -18,13 +18,13 @@ $mag = "";
 
 if($_POST)
 {
-     $id = $_POST['id'];
+    $id = $_POST['id'];
     $name= mysqli_real_escape_string($connection, $_POST['name']);
     $username=mysqli_real_escape_string($connection, $_POST['username']);
     $password=mysqli_real_escape_string($connection, $_POST['password']);
     
     
-    $query = mysqli_query($connection, "update userdetails set name = '{$name}',username = '{$username}',password = '{$password}' , where id='{$id}'") or die(mysqli_error($connection));
+    $query = mysqli_query($connection, "update userdetails set name = '{$name}',username = '{$username}',password = '{$password}' , where id='{$eid}'") or die(mysqli_error($connection));
     
     if($query)
     {
