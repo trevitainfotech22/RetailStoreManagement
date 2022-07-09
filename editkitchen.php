@@ -34,7 +34,7 @@ if (!isset($_SESSION['userid'])) {
                 <br><br>
                 &nbsp;&nbsp;&nbsp;<h2 class="title1"> EDIT KITCHEN</h2>
                 <div class="container">
-                    <form action="/">
+                    <form method="post">
                         <p>
                             &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
 
