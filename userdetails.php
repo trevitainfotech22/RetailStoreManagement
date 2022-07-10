@@ -67,7 +67,7 @@ if (!isset($_SESSION['userid'])) {
                           echo 'StoreManager';
                          }
                            if($res['role']==3){
-                          echo 'Saleaman';
+                          echo 'Salesman';
                            }
                            if($res['role']==4){
                              echo 'Kitchen';

@@ -1,5 +1,5 @@
 <?php 
-include_once ('./Database/mydb.php');
+
 if (!isset($_SESSION['userid'])) {
     header("location.login.php");
 }
@@ -26,7 +26,7 @@ $query2 = mysqli_query($connection, "insert into sale(s_dob,s_phone,p_id) values
  {
  echo "<script>alert('record inserted');</script>";
  }
- 
+ echo "<script> window.location='salesman.php'; </script>";
 }
 ?>
 
