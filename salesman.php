@@ -76,10 +76,10 @@ if (!isset($_SESSION['userid'])) {
                                     <?php 
                                          echo "<td>". $counter."</td>";
                                         echo "<td>".$res['p_name']."</td>";
-                                        echo "<td>". $res['p_username']."</td>";
+                                        echo "<td>".$res['p_username']."</td>";
                                         echo "<td>".$res['p_password']."</td>";
                                         echo "<td>".$res['p_address']."</td>";
-                                        echo "<td>". $res['s_dob']."</td>";
+                                        echo "<td>".$res['s_dob']."</td>";
                                         echo "<td>".$res['s_phone']."</td>";
                                        //echo "<td> <a href='editsales.php?eid={$res['s_id']}'>Edit</a> | <a href='salesman.php ? did={$res['s_id']}]'>Delete</a> </td>";
                                         
